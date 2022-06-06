@@ -11,11 +11,20 @@ public class ConnectionUtil {
     private ConnectionUtil() {}
 
     public static ConnectionUtil getInstance() {
-        if (instance ==null) {
+        if (instance == null) {
             instance = new ConnectionUtil();
         }
 
         return instance;
+    }
+
+    static {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (Exception e) {
+            System.err.println("Failed to load PostgreSQL Driver");
+            throw new RuntimeException(e); // fail fast
+        }
     }
 
     public static Connection getConnection(){

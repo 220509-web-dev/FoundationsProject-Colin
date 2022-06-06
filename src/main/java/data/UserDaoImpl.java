@@ -14,13 +14,12 @@ public class UserDaoImpl implements UserDAO{
     @Override
     public List<User> getUsers() {
 
-        try (Connection conn = ConnectionUtil.getConnection()) {
-            String sql = "select *\n" +
-                    "from users";
+        try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
+            String sql = "select * from foundation_project.users";
             PreparedStatement ps = conn.prepareStatement(sql);
 
             if (Global.debug) {
-                Logger.Log(LogLevel.DEBUG, String.valueOf(ps));
+                Logger.Log(LogLevel.DEBUG,"sql: \n\t" + String.valueOf(ps) + "\n");
             }
 
             ResultSet rs = ps.executeQuery();
@@ -37,10 +36,12 @@ public class UserDaoImpl implements UserDAO{
                 userList.add(user);
             }
 
+            System.out.println(userList.get(0));
+
             return userList;
 
         } catch (SQLException e) {
-            //e.printStackTrace();
+            e.printStackTrace();
             String method = "UserDaoImpl.getUsers()";
             Logger.Log(LogLevel.ERROR, e.getMessage(), method);
             return null;
@@ -50,7 +51,7 @@ public class UserDaoImpl implements UserDAO{
     @Override
     public User createUser(User user) {
 
-        try (Connection conn = ConnectionUtil.getConnection()) {
+        try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
             String sql = "insert into users (first_name,last_name,username,\"password\",email)\n" +
                     "values (?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -61,7 +62,7 @@ public class UserDaoImpl implements UserDAO{
             ps.setString(5, user.getEmail());
 
             if (Global.debug) {
-                Logger.Log(LogLevel.DEBUG, String.valueOf(ps));
+                Logger.Log(LogLevel.DEBUG,"sql: \n\t" + String.valueOf(ps) + "\n");
             }
 
             ps.executeUpdate();
@@ -88,7 +89,7 @@ public class UserDaoImpl implements UserDAO{
     @Override
     public User getUserById(int userId) {
 
-        try (Connection conn =  ConnectionUtil.getConnection()) {
+        try (Connection conn =  ConnectionUtil.getInstance().getConnection()) {
             String sql = "select *\n" +
                     "from users \n" +
                     "where user_id = ?";
@@ -96,7 +97,7 @@ public class UserDaoImpl implements UserDAO{
             ps.setInt(1,userId);
 
             if (Global.debug) {
-                Logger.Log(LogLevel.DEBUG, String.valueOf(ps));
+                Logger.Log(LogLevel.DEBUG,"sql: \n\t" + String.valueOf(ps) + "\n");
             }
 
             ResultSet rs = ps.executeQuery();
@@ -129,7 +130,7 @@ public class UserDaoImpl implements UserDAO{
     @Override
     public User getUserByUsername(String username) {
 
-        try (Connection conn = ConnectionUtil.getConnection()) {
+        try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
             String sql = "select *\n" +
                     "from users \n" +
                     "where username = ?";
@@ -137,7 +138,7 @@ public class UserDaoImpl implements UserDAO{
             ps.setString(1,username);
 
             if (Global.debug) {
-                Logger.Log(LogLevel.DEBUG, String.valueOf(ps));
+                Logger.Log(LogLevel.DEBUG,"sql: \n\t" + String.valueOf(ps) + "\n");
             }
 
             ResultSet rs = ps.executeQuery();
@@ -170,7 +171,7 @@ public class UserDaoImpl implements UserDAO{
     @Override
     public boolean updateUser(User user) {
 
-        try (Connection conn = ConnectionUtil.getConnection()) {
+        try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
             String sql = "update users \n" +
                     "set first_name = ?,\n" +
                     "last_name = ?,\n" +
@@ -187,7 +188,7 @@ public class UserDaoImpl implements UserDAO{
             ps.setInt(6,user.getId());
 
             if (Global.debug) {
-                Logger.Log(LogLevel.DEBUG, String.valueOf(ps));
+                Logger.Log(LogLevel.DEBUG,"sql: \n\t" + String.valueOf(ps) + "\n");
             }
 
             ps.executeUpdate();
@@ -206,14 +207,14 @@ public class UserDaoImpl implements UserDAO{
     @Override
     public Boolean deletedUser(int userId) {
 
-        try (Connection conn = ConnectionUtil.getConnection()) {
+        try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
             String sql = "delete from users \n" +
                     "where user_id = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, userId);
 
             if (Global.debug) {
-                Logger.Log(LogLevel.DEBUG, String.valueOf(ps));
+                Logger.Log(LogLevel.DEBUG,"sql: \n\t" + String.valueOf(ps) + "\n");
             }
 
             ps.executeUpdate();
