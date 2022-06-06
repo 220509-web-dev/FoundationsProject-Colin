@@ -19,10 +19,12 @@ import java.util.stream.Collectors;
 
 public class UserServlet extends HttpServlet {
 
-
-
     UserService userService;
     ObjectMapper mapper;
+
+    private UserServlet() {
+
+    }
 
     public UserServlet(ObjectMapper mapper, UserService userService) {
         this.mapper = mapper;
