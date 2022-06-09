@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Don't Panic</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!--<link rel='stylesheet' type='text/css' media='screen' href='main.css'>-->
+    <script defer src='index.js'></script>
+</head>
+<body>
+    <main>
+        <div id="divMain">
+            <div id="divMainHeader" hidden></div>
+            <div id="error" hidden></div>
+            <div id="divMainBody">
+                <br/>
+                <label>
+                    username:
+                    <input id="username" type="text" />
+                </label>
+                <br/>
+                <label>
+                    password:
+                    <input id="password" type="password" />
+                </label>
+                <br/>
+                <button id="btnLogin" onclick="login()">Login</button>
+                <button id="btnRegister" onclick="openRegister()">Register</button>
+            </div>
+            <div id="result" hidden></div>
+        </div>
+    </main>
+</body>
+</html>

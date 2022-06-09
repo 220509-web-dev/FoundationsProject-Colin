@@ -37,7 +37,7 @@ public class ContextLoaderListener implements ServletContextListener {
 
         ServletContext context = sce.getServletContext();
 
-        context.addServlet("AuthenticationServlet", authServlet).addMapping("/auth/*");
+        context.addServlet("AuthenticationServlet", authServlet).addMapping("/auth","/auth/login","/auth/register");
 
         ServletRegistration.Dynamic registeredServlet = context.addServlet("UserServlet", userServlet);
         registeredServlet.setInitParameter("username","username-value");

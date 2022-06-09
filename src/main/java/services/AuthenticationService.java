@@ -23,7 +23,7 @@ public class AuthenticationService extends UserServiceImpl{
     public User register(User newUser) {
         User checkUser = super.getUserByUsername(newUser.getUsername());
 
-        if (checkUser == null) {
+        if (checkUser == null && !newUser.getUsername().equals("") && !newUser.getPassword().equals("")) {
             return super.createUser(newUser);
         } else {
             return null;

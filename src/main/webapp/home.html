@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div id="divMain">
+            <div id="divMainHeader" hidden></div>
+            <div id="error" hidden></div>
+            <div id="divMainBody">
+                <br/>
+                <label>
+                    username:
+                    <input id="username" type="text" />
+                </label>
+                <br/>
+                <label>
+                    password:
+                    <input id="password" type="password" />
+                </label>
+                <br/>
+                <button id="btnLogin" onclick="login()">Login</button>
+                <button id="btnRegister" onclick="openRegister()">Register</button>
+            </div>
+            <div id="result" hidden></div>
+        </div>
+    </main>
+</body>
+</html>
