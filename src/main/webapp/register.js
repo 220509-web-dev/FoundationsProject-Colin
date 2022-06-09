@@ -17,6 +17,7 @@ function register() {
             if (response.ok) {
                 header.hidden = false;
                 header.innerHTML = "Welcome " + data.firstName + " " + data.lastName;
+                window.location.href = 'home.html';
             } else {
                 error.hidden = false;
                 error.innerHTML = "username already exists"   

@@ -5,7 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Don't Panic</title>
+    <script defer src='home.js'></script>
 </head>
 <body>
     <main>
@@ -15,17 +16,17 @@
             <div id="divMainBody">
                 <br/>
                 <label>
-                    username:
-                    <input id="username" type="text" />
+                    User ID:
+                    <input id="userId" type="number" />
                 </label>
                 <br/>
                 <label>
-                    password:
-                    <input id="password" type="password" />
+                    Username
+                    <input id="username" type="text" />
                 </label>
                 <br/>
-                <button id="btnLogin" onclick="login()">Login</button>
-                <button id="btnRegister" onclick="openRegister()">Register</button>
+                <button id="btnLogout" onclick="home()">Log out</button>
+                <button id="btnSearch" onclick="getUser()">Search User</button>
             </div>
             <div id="result" hidden></div>
         </div>

@@ -14,6 +14,7 @@ function login() {
             error.hidden = true;
             header.hidden = false;
             header.innerHTML = "Welcome " + user.firstName + " " + user.lastName;
+            window.location.href = 'home.html';
             //console.log(user);
         } else {
             error.hidden = false;
