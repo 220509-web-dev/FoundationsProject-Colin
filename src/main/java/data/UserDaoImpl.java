@@ -15,7 +15,7 @@ public class UserDaoImpl implements UserDAO{
     public List<User> getUsers() {
 
         try (Connection conn = ConnectionUtil.getInstance().getConnection()) {
-            String sql = "select * from foundation_project.users";
+            String sql = "select * from users";
             PreparedStatement ps = conn.prepareStatement(sql);
 
             if (Global.debug) {
